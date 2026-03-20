@@ -15,12 +15,15 @@ class NoteAdapter(
     private val onNoteLongClick: (Note) -> Unit
 ) : ListAdapter<Note, NoteAdapter.NoteViewHolder>(NoteDiffCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        NoteViewHolder(ItemNoteBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
+    return NoteViewHolder(
+        ItemNoteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        )
+    }
 
-    override fun onBindViewHolder(holder: NoteViewHolder, position: Int) =
+    override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         holder.bind(getItem(position))
-
+    }
     inner class NoteViewHolder(private val binding: ItemNoteBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
